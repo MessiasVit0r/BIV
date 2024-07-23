@@ -1,0 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+*,
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: .5s ease;
+}
+a:hover {
+    color: yellow;
+}
+
+body {
+    height: auto;
+}
+
+/* Variáveis */
+
+:root {
+    --title-h1: 44px;
+    --title-h2: 36px;
+    --title-secondary: 24px;
+}
+
+/* REUTILIZÁVEIS */
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    padding: 0 8%;
+}
+
+.button-primary {
+    display: flex;
+    padding: 12px 30px;
+    border: none;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    background: #f8b739;
+    text-decoration: none;
+    color: black;
+}
+
+.button-secondary {
+    border: none;
+    outline: none;
+    display: flex;
+    padding: 12px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    color: black;
+    background: #d9d9d9;
+    text-decoration: none;
+}
+
+.card {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 56px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    border: 0.5px solid #e3000b;
+    box-shadow: -2px 5px 10.7px 0px rgba(0, 0, 0, 0.25);
+}
+
+.card::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #fff 0.05%, #e3000b 125.94%);
+    transition: transform 0.5s ease;
+    transform: translateY(100%);
+}
+
+.card:hover::before {
+    transform: translateY(0);
+}
+
+.card-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+footer {
+    display: flex;
+    margin-top: 20px;
+    padding: 15px 0px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background-color: #000;
+}
+
+footer p {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* HOME */
+
+.home-section {
+    padding: 120px 8% 0 8%;
+}
+
+.hero-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-img-container {
+    width: 40%;
+    height: 100%;
+    background: url("dist/assets/coin-trab.png") center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.hero-title {
+    color: #000;
+    font-family: Roboto;
+    font-size: var(--title-h1);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.hero-title-secondary {
+    color: #000;
+    font-family: Roboto;
+    font-size: var(--title-secondary);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.hero-text-container {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.container-buttons {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+/* HIGHLIGHT / CARDS */
+
+.highlight-section {
+    gap: 66px;
+}
+
+.highlight-text {
+    display: flex;
+    width: 278px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    flex-shrink: 0;
+
+    h2 {
+        color: #000;
+        font-family: Roboto;
+        font-size: var(--title-h2);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+.highlight-cards-container {
+    display: flex;
+    width: 70%;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.highlight-cards-container-responsive {
+    display: none;
+}
+.card-responsive {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 16px 11px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: -1px 1px 10.7px 0px rgba(0, 0, 0, 0.25);
+}
+
+.card-upper-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-upper-section p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.card-upper-section img {
+    width: 56px;
+}
+
+.card-down-section h6 {
+    font-weight: 500;
+    font-size: 16px;
+}
+.card-down-section p {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+@media (max-width: 890px) {
+    main {
+        gap: 30px;
+    }
+
+    .home-section {
+        padding-top: 100px;
+    }
+
+    .hero-text-container {
+        width: 60%;
+    }
+
+    :root {
+        --title-h1: 34px;
+        --title-h2: 26px;
+        --title-secondary: 18px;
+    }
+
+    .highlight-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .highlight-text {
+        width: 100%;
+    }
+
+    .highlight-cards-container {
+        width: 100%;
+    }
+    .remove-responsive {
+        display: none;
+    }
+}
+
+@media (max-width: 430px) {
+    .hero-container {
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .hero-img-container {
+        background-image: url("dist/assets/responsive-coin.png");
+        background-position: center;
+        width: 100%;
+        height: 300px;
+    }
+
+    .hero-text-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-title-secondary {
+        display: none;
+    }
+
+    .container-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .button-primary,
+    .button-secondary {
+        padding: 12px 30px;
+        font-size: 18px;
+    }
+
+    .highlight-cards-container {
+        display: none;
+    }
+
+    .highlight-cards-container-responsive {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 28px;
+        align-items: flex-start;
+        align-content: flex-start;
+        align-self: stretch;
+        flex-wrap: wrap;
+    }
+}

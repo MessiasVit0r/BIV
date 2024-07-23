@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+header {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    top: 0;
+    padding: 0 8% 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    z-index: 4;
+    color: white;
+    font-family: Roboto;
+}
+.menu-button {
+    height: 33%;
+    width: 24px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    .linha {
+        background-color: white;
+        height: 3px;
+        width: 100%;
+    }
+}
+.seta-esquerda {
+    height: 100%;
+    width: 50px;
+    display: none;
+    align-items: center;
+    img {
+        width: 80%;
+    }
+}
+.list-menu {
+    font-size: 16px;
+    list-style-type: none;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+
+    li {
+        transition: color 0.3s ease;
+    }
+    li:hover {
+        color: yellow;
+    }
+}
+.container-logo {
+    height: 100%;
+    width: max-content;
+    gap: 15px;
+    display: flex;
+    align-items: center;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    
+    img {
+        width: 15%;
+        
+    }
+}
+.menu-button:hover, .container-logo:hover, .item:hover{
+    cursor: pointer;
+}
+
+#nav-active {
+    color: yellow;
+}
+@media (max-width: 600px)  {
+    header {
+        height: 59px;
+    }
+    .list-menu {
+        display: none;
+        position: absolute;
+        visibility: hidden;
+        top: -100%;
+        flex-direction: column;
+        left: 0;
+        /* top: 50px; */
+        width: 100%;
+        transition: top 0.5s ease;
+        li{
+            padding: 15px 0 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .menu-button {
+        display: flex;
+    }
+    .container-logo {
+        h1 {
+            display: none;
+        }
+        img {
+            width: 80%;
+        }
+    }
+    .list-menu.active {
+        display: flex;
+        visibility: visible;
+        top: 58px;
+        animation: slide-in 0.5s forwards;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateY(-100%); /* Começa acima da tela */
+    }
+    100% {
+        transform: translateY(0); /* Desliza para baixo */
+    }
+}
