@@ -228,5 +228,9 @@ function TotalInvestido($connection,$iduser) : float {
     $estrutura->execute();
     $dados = $estrutura->fetch();
 
-    return $dados['Total'];
+    if(empty($dados['Total'])){
+        return 0;
+    }else{
+        return $dados['Total'];
+    }
 }

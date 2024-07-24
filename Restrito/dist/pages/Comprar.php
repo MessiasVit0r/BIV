@@ -86,8 +86,7 @@ $valor = $dados_acao['valor'];
     </header>
     <main>
         <section class="wrapper">
-            <form method="POST">
-            <div class="container-confirm">
+            <form method="POST" class='container-confirm'>
                 <h1>
                 COMPRAR AÇÕES
                 </h1>
@@ -101,9 +100,8 @@ $valor = $dados_acao['valor'];
                 </div>
                 <input type="hidden" value="<?= $ticker ?>" name="ticker">
                 <div class="form-group" style="text-align: center;">            
-                <button  type="submit" name="submit" class="btn btn-success">Comprar</button>
+                <button  type="submit" name="submit" class="button-primary">Comprar</button>
                 </div>
-            </div>
             </form>
         </section>
     </main>

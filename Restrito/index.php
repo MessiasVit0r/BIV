@@ -1,3 +1,16 @@
+<?php 
+session_start();
+
+include("dist/src/data.php");
+include("dist/src/connection.php");
+
+$acoes = Acoes($connection);
+$minhas_acoes = MinhasAcoes($connection,$_SESSION['email']);
+$total = TotalInvestido($connection,$_SESSION['iduser']);
+
+$mercado = VerificarMercado($connection);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,7 +32,7 @@
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 
     <header>
@@ -35,7 +48,7 @@
             <li class="item navigate-home">Início</li>
             <li class="item" id="navigate-acoes">Ações</li>
             <li class="item" id="navigate-historico">Histórico</li>
-            <li class="item" >Créditos</li>
+            <li class="item">Créditos</li>
         </ul>
         <div class="navigate-home container-logo">
             <h1>Via de Acesso</h1>
@@ -68,97 +81,21 @@
                 <h2>Confira as ações em destaque no mercado hoje!</h2>
                 <a id="navigate-acoes" class="button-primary remove-responsive">Investir</a>
             </div>
-            <div class="highlight-cards-container">
-                <div class="card">
-                    <img src="dist/assets/coca-cola-seeklogo.svg" alt="Coca-cola logo">
-                    <div class="card-text-container">
-                        <p>Código</p>
-                        <p>Nome da empresa</p>
-                        <p>R$14.33</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="dist/assets/coca-cola-seeklogo.svg" alt="Coca-cola logo">
-                    <div class="card-text-container">
-                        <p>Código</p>
-                        <p>Nome da empresa</p>
-                        <p>R$14.33</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="dist/assets/coca-cola-seeklogo.svg" alt="Coca-cola logo">
-                    <div class="card-text-container">
-                        <p>Código</p>
-                        <p>Nome da empresa</p>
-                        <p>R$14.33</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="dist/assets/coca-cola-seeklogo.svg" alt="Coca-cola logo">
-                    <div class="card-text-container">
-                        <p>Código</p>
-                        <p>Nome da empresa</p>
-                        <p>R$14.33</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="dist/assets/coca-cola-seeklogo.svg" alt="Coca-cola logo">
-                    <div class="card-text-container">
-                        <p>Código</p>
-                        <p>Nome da empresa</p>
-                        <p>R$14.33</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="dist/assets/coca-cola-seeklogo.svg" alt="Coca-cola logo">
-                    <div class="card-text-container">
-                        <p>Código</p>
-                        <p>Nome da empresa</p>
-                        <p>R$14.33</p>
-                    </div>
-                </div>
-            </div>
+    
             <div class="highlight-cards-container-responsive">
+                <?php foreach($acoes as $acao){ ?>
                 <div class="card-responsive" id="navigate-acoes">
                     <div class="card-upper-section">
-                        <p>NDEP</p>
-                        <img src="dist/assets/coca-cola-seeklogo.svg" alt="">
+                        <p><?= $acao['ticker'] ?></p>
+                        <div class="card-img-container"
+                            style="background-image: url('dist/assets/<?= $acao['logo'] ?>');"></div>
                     </div>
                     <div class="card-down-section">
-                        <h6>R$ 38,32</h6>
-                        <p>Nome da empresa</p>
+                        <h6>R$ <?= number_format($acao['valor'],2) ?></h6>
+                        <p><?= $acao['nome'] ?></p>
                     </div>
                 </div>
-                <div class="card-responsive" id="navigate-acoes">
-                    <div class="card-upper-section">
-                        <p>NDEP</p>
-                        <img src="dist/assets/coca-cola-seeklogo.svg" alt="">
-                    </div>
-                    <div class="card-down-section">
-                        <h6>R$ 38,32</h6>
-                        <p>Nome da empresa</p>
-                    </div>
-                </div>
-                <div class="card-responsive" id="navigate-acoes">
-                    <div class="card-upper-section">
-                        <p>NDEP</p>
-                        <img src="dist/assets/coca-cola-seeklogo.svg" alt="">
-                    </div>
-                    <div class="card-down-section">
-                        <h6>R$ 38,32</h6>
-                        <p>Nome da empresa</p>
-                    </div>
-                </div>
-                <div class="card-responsive" id="navigate-acoes">
-                    <div class="card-upper-section">
-                        <p>NDEP</p>
-                        <img src="dist/assets/coca-cola-seeklogo.svg" alt="">
-                    </div>
-                    <div class="card-down-section">
-                        <h6>R$ 38,32</h6>
-                        <p>Nome da empresa</p>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </section>
     </main>

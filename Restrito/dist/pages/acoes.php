@@ -12,6 +12,7 @@ $mercado = VerificarMercado($connection);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@ $mercado = VerificarMercado($connection);
     <title>Ações</title>
     <link rel="icon" href="../assets/logo-via.png" type="image/x-icon">
 </head>
+
 <body>
 
     <div vw class="enabled">
@@ -31,9 +33,9 @@ $mercado = VerificarMercado($connection);
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script> 
-    
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
     <header>
         <div class="menu-button" id="menu-button">
             <div class="linha"></div>
@@ -44,7 +46,7 @@ $mercado = VerificarMercado($connection);
             <li class="item navigate-home">Início</li>
             <li class="item" id="navigate-acoes">Ações</li>
             <li class="item" id="navigate-historico">Histórico</li>
-            <li class="item" >Créditos</li>
+            <li class="item">Créditos</li>
         </ul>
         <div class="navigate-home container-logo">
             <h1>Via de Acesso</h1>
@@ -80,25 +82,24 @@ $mercado = VerificarMercado($connection);
             <div class="container-acoes">
                 <h1>Compra de ações</h1>
                 <div class="cards-container">
-                <?php 
+                    <?php 
 foreach($acoes as $acao){ ?>
-    <div class="card-responsive">
+                    <div class="card-responsive">
                         <div class="card-upper-section">
                             <p><?= $acao['ticker'] ?></p>
-                            <a href="Comprar?ticker=<?= $acao['ticker'] ?>">
-                            <button class="button-primary">
+                            <a class="button-primary" href="Comprar?ticker=<?= $acao['ticker'] ?>">
                                 COMPRAR
-                            </button>
-                        </a>
+                            </a>
                         </div>
-                            <div class="card-img-container" style="background-image: url('../assets/<?= $acao['logo'] ?>');">
+                        <div class="card-img-container"
+                            style="background-image: url('../assets/<?= $acao['logo'] ?>');">
                         </div>
                         <div class="card-down-section">
                             <h6>R$ <?= number_format($acao['valor'],2) ?></h6>
                             <p><?= $acao['nome'] ?></p>
                         </div>
                     </div>
-<?php } ?>  
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -110,17 +111,16 @@ foreach($acoes as $acao){ ?>
             <div class="container-acoes">
                 <h1>Venda de ações</h1>
                 <div class="cards-container">
-               <?php foreach($minhas_acoes as $acao){ ?>
+                    <?php foreach($minhas_acoes as $acao){ ?>
                     <div class="card-responsive">
                         <div class="card-upper-section">
                             <p><?= $acao['ticker'] ?></p>
-                            <a href="Vender?ticker=<?= $acao['ticker'] ?>">
-                            <button class="button-secondary">
+                            <a class="button-secondary" href="Vender?ticker=<?= $acao['ticker'] ?>">
                                 VENDER
-                            </button>
-                        </a>
+                            </a>
                         </div>
-                        <div class="card-img-container" style="background-image: url('../assets/<?= $acao['logo'] ?>');">
+                        <div class="card-img-container"
+                            style="background-image: url('../assets/<?= $acao['logo'] ?>');">
                         </div>
                         <div class="card-down-section">
                             <h6>R$ <?= number_format($acao['valor'],2) ?></h6>
@@ -136,9 +136,10 @@ foreach($acoes as $acao){ ?>
     <footer>
         <p> &copy; Via de Acesso. Todos os direitos reservados.</p>
     </footer>
-    
+
     <script src="../scripts/navBar.js"></script>
     <script src="../scripts/navbarPages.js"></script>
     <script src="../scripts/buy-sell.js"></script>
 </body>
+
 </html>
