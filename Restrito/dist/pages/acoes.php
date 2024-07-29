@@ -46,7 +46,8 @@ $mercado = VerificarMercado($connection);
             <li class="item navigate-home">Início</li>
             <li class="item" id="navigate-acoes">Ações</li>
             <li class="item" id="navigate-historico">Histórico</li>
-            <li class="item">Créditos</li>
+            <li class="item" id="navigate-creditos"> Créditos</li>
+            <li class="item" id="logout"> <img src="../assets/exit.png">&nbsp Sair</li>
         </ul>
         <div class="navigate-home container-logo">
             <h1>Via de Acesso</h1>
@@ -60,7 +61,7 @@ $mercado = VerificarMercado($connection);
         </div>
         <div class="card-container">
             <div class="card-valor" id="disponivel">
-                <h3 class="text">Valor Disponivel</h3>
+                <h3 class="text">Valor Disponível</h3>
                 <h1 class="valor">R$ <?= number_format($_SESSION['dinheiro'],2) ?></h1>
             </div>
             <div class="card-valor" id="investido">
@@ -70,28 +71,33 @@ $mercado = VerificarMercado($connection);
         </div>
     </section>
     <main>
+        <div class="warn warn-green">
+            <p>O mercado está aberto!</p>
+            <p>Você possui R$<?= number_format($_SESSION['dinheiro'],2) ?>, esse valor é zerado ao fim do pregão.</p>
+        </div>
+        <div class="warn warn-blue">
+            <p>Compre suas ações com consciência!</p>
+            <p>É possivel vender suas ações depois, mas talvez não pelo mesmo preço que comprou.</p>
+        </div>
+        <div class="switch-container">
+            <input type="checkbox" id="switch" class="switch-input">
+            <label for="switch" class="switch-label">
+                <span id="switch-text">COMPRAR</span>
+            </label>
+        </div>
         <section class="section-comprar section-organizer wrapper">
-            <div class="warn warn-green">
-                <p>O mercado está aberto!</p>
-                <p>Você possui R$<?= number_format($_SESSION['dinheiro'],2) ?>, esse valor é zerado ao fim do pregão</p>
-            </div>
-            <div class="warn warn-blue">
-                <p>Compre suas ações com consciência!</p>
-                <p>É possivel vender suas ações depois, mas talvez não pelo mesmo que comprou.</p>
-            </div>
             <div class="container-acoes">
                 <h1>Compra de ações</h1>
                 <div class="cards-container">
-                    <?php 
-foreach($acoes as $acao){ ?>
-                    <div class="card-responsive">
-                        <div class="card-upper-section">
+                    <?php foreach($acoes as $acao){ ?>
+                    <div class="card-responsive" style="background: #fff">
+                        <div class="card-upper-section row">
                             <p><?= $acao['ticker'] ?></p>
                             <a class="button-primary" href="Comprar?ticker=<?= $acao['ticker'] ?>">
                                 COMPRAR
                             </a>
                         </div>
-                        <div class="card-img-container"
+                        <div class="card-img-container" id="fix-img-size"
                             style="background-image: url('../assets/<?= $acao['logo'] ?>');">
                         </div>
                         <div class="card-down-section">
@@ -103,23 +109,20 @@ foreach($acoes as $acao){ ?>
                 </div>
             </div>
         </section>
-        <section class="section-vender section-organizer wrapper">
-            <div class="warn warn-blue">
-                <p>Compre suas ações com consciência!</p>
-                <p>É possivel vender suas ações depois, mas talvez não pelo mesmo que comprou.</p>
-            </div>
+        <section class="section-vender section-organizer wrapper hidden">
             <div class="container-acoes">
                 <h1>Venda de ações</h1>
                 <div class="cards-container">
                     <?php foreach($minhas_acoes as $acao){ ?>
-                    <div class="card-responsive">
-                        <div class="card-upper-section">
+                    <div class="card-responsive" style="background: #fff">  <!-- Para trocar o fundo para branco no começo dos pregões basta adicionar um background como coloquei no vendas
+                        Para trocar a cor do fundo para azul ou vermelho ao valorizar ou desvalorizar, vá ao css de ações e procure onde houver 'card-ressponsive::before', lá que troca a cor -->
+                        <div class="card-upper-section row">
                             <p><?= $acao['ticker'] ?></p>
                             <a class="button-secondary" href="Vender?ticker=<?= $acao['ticker'] ?>">
                                 VENDER
                             </a>
                         </div>
-                        <div class="card-img-container"
+                        <div class="card-img-container" id="fix-img-size"
                             style="background-image: url('../assets/<?= $acao['logo'] ?>');">
                         </div>
                         <div class="card-down-section">

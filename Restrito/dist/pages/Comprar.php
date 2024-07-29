@@ -77,7 +77,8 @@ $valor = $dados_acao['valor'];
             <li class="item navigate-home">Início</li>
             <li class="item" id="navigate-acoes">Ações</li>
             <li class="item" id="navigate-historico">Histórico</li>
-            <li class="item" >Créditos</li>
+            <li class="item" id="navigate-creditos"> Créditos</li>
+            <li class="item" id="logout"> <img src="../assets/exit.png">&nbsp Sair</li>
         </ul>
         <div class="navigate-home container-logo">
             <h1>Via de Acesso</h1>

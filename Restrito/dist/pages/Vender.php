@@ -88,7 +88,8 @@ $dados_acao = Acao($connection,$ticker)->fetch();
             <li class="item navigate-home">Início</li>
             <li class="item" id="navigate-acoes">Ações</li>
             <li class="item" id="navigate-historico">Histórico</li>
-            <li class="item" >Créditos</li>
+            <li class="item" id="navigate-creditos"> Créditos</li>
+            <li class="item" id="logout"> <img src="../assets/exit.png">&nbsp Sair</li>
         </ul>
         <div class="navigate-home container-logo">
             <h1>Via de Acesso</h1>
@@ -112,7 +113,7 @@ $dados_acao = Acao($connection,$ticker)->fetch();
                 </div>
                 <input type="hidden" value="<?= $ticker ?>" name="ticker">
                 <div class="form-group" style="text-align: center;">            
-                <button  type="submit" name="submit" class="btn btn-danger">Vender</button>
+                <button  type="submit" name="submit" class="button-secondary">Vender</button>
                 </div>
             </div>
             </form>

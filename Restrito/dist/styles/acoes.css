@@ -14,6 +14,11 @@ body {
     height: 100vh;
     width: 100%;
 }
+
+main {
+    align-items: center;
+    padding-top: 250px;
+}
 .valor-container {
     position: fixed;
     margin-top: 60px;
@@ -85,6 +90,69 @@ body {
     height: 5000px;
 }
 
+/* SWITCH */
+
+.switch-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.switch-input {
+    display: none;
+}
+
+.switch-label {
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    background: #05ec00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    border: white solid 1px;
+    position: relative;
+}
+
+
+.switch-label:after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    width: 44px;
+    height: 44px;
+    border:  solid 1px #e4e4e4;
+    background: #e4e4e4;
+    border-radius:100%;
+    transition: 0.3s;
+}
+
+.switch-input:checked + .switch-label {
+    background: #e20000;
+}
+
+#switch-text {
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.switch-input:checked + .switch-label:after {
+    left: calc(100% - 3px);
+    transform: translateX(-100%);
+}
+
+.section-organizer.hidden {
+    display: none;
+}
+
+.section-organizer:not(.hidden) {
+    display: block;
+}
+
 /* COMPRAR AÇÕES */
 
 .section-organizer {
@@ -92,10 +160,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 53px;
-}
-
-.section-comprar {
-    padding-top: 250px;
 }
 
 .warn {
@@ -142,17 +206,21 @@ body {
 
 .cards-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 35px;
+    
     flex-wrap: wrap;
 }
 
 /* ALTERAÇÕES NOS CARDS */
 
+.row {
+    flex-direction: row;
+}
+
 .card-responsive {
     align-items: center;
-    width: 250px;
+    width: 200px;
     padding: 20px;
     transition: 0.5s ease;
 }
@@ -255,10 +323,6 @@ body {
         width: 100%;
     }
 
-    .section-comprar {
-        padding-top: 250px;
-    }
-
     .card-responsive {
         width: 200px;
     }
@@ -268,7 +332,7 @@ body {
     }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 600px) {
     .card-valor {
         .text {
             font-size: 16px;
@@ -278,17 +342,17 @@ body {
         }
     }
 
-    .section-comprar {
+    main {
         padding-top: 220px;
     }
 
     .cards-container {
-        gap: 20px;
+        row-gap: 20px;
     }
 
     .card-responsive {
         display: flex;
-        width: 140px;
+        width: 150px;
 
         justify-content: center;
         align-items: center;
@@ -296,8 +360,8 @@ body {
         padding: 10px;
     }
 
-    .card-img-container {
-        height: 50px;
+    #fix-img-size {
+        max-width: 100%;
     }
 
     .card-upper-section p, .card-down-section p {
@@ -311,5 +375,11 @@ body {
     .card-responsive .button-primary,.card-responsive .button-secondary {
         font-size: 10px;
         padding: 8px 0;
+    }
+}
+
+@media (max-width: 365px) {
+    .card-responsive {
+        width: 140px;
     }
 }

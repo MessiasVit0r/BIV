@@ -22,3 +22,19 @@ buttonArray.forEach((btn) => {
         window.location.href = "../pages/confirm.php"
     })
 });
+
+document.getElementById('switch').addEventListener('change', function() {
+    const comprarSection = document.querySelector('.section-comprar');
+    const venderSection = document.querySelector('.section-vender');
+    const switchtext = document.querySelector('#switch-text');
+
+    if (this.checked) {
+        comprarSection.classList.add('hidden');
+        venderSection.classList.remove('hidden');
+        switchtext.innerHTML = "VENDER";
+    } else {
+        comprarSection.classList.remove('hidden');
+        venderSection.classList.add('hidden');
+        switchtext.innerHTML = "COMPRAR";
+    }
+})
